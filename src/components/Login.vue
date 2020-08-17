@@ -1,120 +1,62 @@
 <template>
-    <div class="col-7">
-     
-        <form class="form" v-if="vista == 1">
-            <h5 class="text-dark font-weight-light">Inicia Sesión</h5>
-            <div class="form-group" :class="{'form-group--error' : $v.name.$error}">
-                <input type="text" class="form-control" placeholder="Usuario">
-            </div>
-            
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Contraseña">
-            </div>
-            
-            <div class="form-group dcenter justify-content-between">
-                <div class="small font-weight-light">
-                    <p class="m-0">¿Aún no tienes cuenta?</p>
-                    <a @click="vista++" href="#">Registrate</a>
+    <div class="row m-0 h-100">
+        <div class="col-12 p-0 dcenter py-5 my-5">
+            <div class="col-10 p-0 bg-white shadow-sm h-100 dcenter">
+                <div class="col-6 p-0 bg-danger p-4 h-100">
+                    <h1>Title</h1>
                 </div>
-                <button class="btn btn-primary btn-sm">Ingresar</button>
-            </div>
-        </form>
-        <form class="form" v-if="vista === 2">
-            <h5 class="text-dark font-weight-light">Registrate</h5>
-            <div class="form-group dcenter justify-content-between">
-                <input 
-                    type="text" 
-                    class="form-control rounded-0 col-5" placeholder="Nombre(s)"
-                    
-                >
-                <div class="invalid-feedback">
-                    
+                <div class="col-6 p-0 bg-white p-4 h-100 dcenter">
+                    <form class="col-7">
+                        <h4 class="text-dark title text-uppercase mb-3">Registrate</h4>
+                        <div class="form-group dcenter justify-content-between">
+                            <input 
+                                type="text" class="form-input col-5" placeholder="Nombre"
+                            >
+                            <input 
+                                type="text" class="form-input col-6" placeholder="Apellidos"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input 
+                                type="email" class="form-input" placeholder="Correo Electrónico"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input 
+                                type="password" class="form-input" placeholder="Contraseña"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input 
+                                type="password" class="form-input" placeholder="Repetir Contraseña"
+                            >
+                        </div>
+                        <div class="form-group dcenter justify-content-between">
+                            <button class="btn btn-sm btn-danger">Resetear</button>
+                            <button class="btn btn-sm btn-primary">Registrar</button>
+                        </div>
+                        <div class="form-group small text-center">
+                            <p class="m-0">¿Ya tienes una cuenta?</p>
+                            <a href="#">Inicia Sesión.</a>
+                        </div>
+                    </form>
                 </div>
-                <input 
-                    type="text" 
-                    class="form-control rounded-0 col-6" placeholder="Apellidos"
-                    
-                >
-                <div class="valid-feedback">Tú nombre es valido!</div>
-                <div class="invalid-feedback">
-                    
-                </div>
             </div>
-            <div class="form-group">
-                <input 
-                    type="text"
-                    class="form-control rounded-0" placeholder="Usuario"
-                    v-model="usuario"
-                >
-            </div>
-            <div class="form-group">
-                <input 
-                    type="password" 
-                    class="form-control rounded-0" placeholder="Contraseña"
-                    v-model="contraseña"
-                >
-            </div>
-            <div class="form-group">
-                <input 
-                    type="password" 
-                    class="form-control rounded-0" placeholder="Repetir Contraseña"
-                    v-model="repetirContraseña"
-                >
-            </div>
-            
-            <div class="form-group dcenter justify-content-between">
-                <div class="small font-weight-light">
-                    <p class="m-0">¿Ya tienes cuenta?</p>
-                    <a @click="vista--" href="#">Inicia Sesión</a>
-                </div>
-                <button class="btn btn-primary btn-sm font-weight-light">Registrar</button>
-            </div>
-        </form>
-        
+        </div>
     </div>
 </template>
 
-<script>
-import { required, minLength, maxLength, sameAs } from 'vuelidate/lib/validators'
-
-
-export default {
-    data(){
-        return{
-            vista: 2,
-            formulario:{
-                nombre: '',
-                apellidos: '',
-                contraseña: '',
-                repetirContraseña: ''
-            }
-        }
-    },
-    validations:{
-        formulario:{
-            nombre:{
-                required,
-                minLength: minLength(4),
-                maxLength: maxLength(10)
-            },
-            apellidos:{
-                required,
-                minLength: minLength(8),
-                maxLength: maxLength(16)
-            },
-            password:{
-                required,
-                minLength: minLength(8),
-                maxLength: maxLength(16)
-            },
-            repeatPassword:{
-                required,
-                sameAsPassword: sameAs('password')z
-            }
-        }
-    },
-    methods:{
-        
+<style>
+    .form-input{
+        width: 100%;
+        padding: 5px 15px;
+        border: none !important;
+        outline: none;
+        background-color: #6398E6;
+        color: white !important;
     }
-}
-</script>
+    .form-input::placeholder{
+        color: white;
+        border: none;
+    }
+</style>

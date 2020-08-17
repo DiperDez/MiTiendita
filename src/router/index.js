@@ -14,12 +14,22 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Inicio',
-    component: Inicio,
-    children: [
-      {path: '/login', component: Login},
-      {path: '/acerca', component: Acerca},
-      {path: '/contacto', component: Contacto}
-    ]
+    component: Inicio
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/acerca',
+    name: 'Acerca',
+    component: Acerca
+  },
+  {
+    path: '/contacto',
+    name: 'Contacto',
+    component: Contacto
   },
   {
     path: '/ventas',
